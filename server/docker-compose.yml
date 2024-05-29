@@ -1,0 +1,45 @@
+# mongodb docker-compose.yml
+version: '3.1'
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data/db
+
+  hackeru-server:
+    image: hackeru-server:18.04
+    container_name: hackeru-server
+    restart: always
+    ports:
+      - 9191:9191
+    depends_on:
+      - mongodb
+    environment:
+      - PORT=9191
+      - NODE_ENV=development
+      - SERVER=mongodb
+
+  hackeru-client:
+    image: hackeru-client:18.04
+    container_name: hackeru-client
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+      - hackeru-server
+
+volumes:
+  mongodb_data:
+
+# run command
+
+# to running the container
+# docker compose up -d
+
+# to remove the container
+# docker compose down

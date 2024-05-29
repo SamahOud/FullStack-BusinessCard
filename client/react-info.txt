@@ -1,0 +1,52 @@
+React Terminal
+
+1. npm i -g create-react-app
+
+2. create-react-app client -> Folder Name
+   * To create a folder use -> mkdir ( Folder Name )
+   * cd (Folder Name) -> And you are inside the folder
+
+3. npm start
+
+4. React Developer Tools -> Install from Chrome
+	* From vscode -> install - es7 react\redux 
+
+5. npm install @mui/material @emotion/react @emotion/styled @mui/icons-material @fontsource/roboto @types/material-ui
+ 
+6. npm i prop-types
+
+7. npm install @fontsource/roboto
+	Then you can import it in your entry point: (index.js)
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+8. npm i react-router-dom
+
+9. npm i axios
+
+10. npm i joi
+
+11. npm i jwt-decode
+
+12. npm i @mui/x-data-grid
+
+13. Create two Files:
+   * .dockerignore
+         node_modules
+
+   * Dockerfile
+      FROM node
+
+      COPY . .
+
+      RUN npm install
+
+      EXPOSE 3000
+
+      CMD npm run start
+
+14. Terminal: Run command
+      * docker build . -t hackeru-client:18.04

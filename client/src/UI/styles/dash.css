@@ -1,0 +1,61 @@
+.paddingAll {
+    padding: 10px 10px;
+}
+
+.businessTitle {
+    font-weight: 500;
+    font-size: 24px;
+    color: #eceff1;
+}
+
+/* .priceSubTitle {
+    font-size: 14px;
+} */
+
+.contentStyle {
+    display: flex;
+    flex-direction: row;
+}
+
+.iconStyle {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: aliceblue;
+}
+
+.iconStyleBlack {
+    margin-top: 40px;
+    margin-left: 20px;
+    color: black;
+}
+
+.gradiend {
+    background: rgb(40, 34, 70);
+    background: linear-gradient(158deg, rgba(40, 34, 70, 1) 0%, rgba(30, 47, 141, 1) 100%);
+}
+
+.gradiendLight {
+    border-radius: 5px;
+    padding: 16px 0 0 16px;
+    /* background: #00b4d8; */
+    background: #00b4d8;
+    background: linear-gradient(158deg, #00b4d8 0%, rgba(91, 180, 96, 1) 100%);
+
+    /* background: rgb(53, 138, 148);
+    background: linear-gradient(158deg, rgba(53, 138, 148, 1) 0%, rgba(91, 180, 96, 1) 100%); */
+
+    /* background: rgb(91, 180, 96, 1);
+    background: linear-gradient(158deg, rgba(91, 180, 96, 1) 0%, #00b4d8 100%); */
+}
+
+.bgcolor {
+    min-height: 100vh;
+    background: #eceff1;
+    background: linear-gradient(158deg, rgba(224, 224, 224) 0%, rgba(233, 237, 254) 100%);
+}
+
+.img {
+    border-top-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}

@@ -1,0 +1,40 @@
+.background {
+    /* width: 430px; */
+    width: auto;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+}
+
+.shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape:first-child{
+    background: linear-gradient(
+        #1845ad,
+        #23a2f6
+    );
+    left: -135px;
+    top: 14px;
+}
+.shape:last-child{
+    background: linear-gradient(
+        to right,
+        #ff512f,
+        #f09819
+    );
+    right: -420px;
+    bottom: -23px;
+}
+
+@media screen and (max-width: 940px) {
+    .shape {
+        display: none;
+    }
+}

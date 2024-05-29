@@ -1,0 +1,206 @@
+******************** Node - Express - MongoDB ********************
+
+1. Create Files:
+    server.js
+
+****************************************
+2. Terminal:
+    npm init OR npm init -y (if you want to skip prompts)
+
+    * package name: (server) business-card-app
+    * version: (1.0.0)
+    * description:
+    * entry point: (server.js)
+    * test command:
+    * git repository:
+    * keywords:
+    * author:
+    * license: (ISC)
+        About to write to C:\Users\Samah\Folder-All\HuckerU\NEW HACKER-U\HuckerU-2023\2024\Node_\Business-Card-App\server\package.json:
+
+    {
+    "name": "business-card-app",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "author": "",
+    "license": "ISC"
+    }
+
+****************************************
+3. Terminal: install packages
+    * npm i chalk@4.1.1 lodash
+    * npm i express
+    * npm i -D nodemon
+
+****************************************
+4. Change in package.json
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    TO THIS 
+        "scripts": {
+            "start": "node .",
+            "test": "node test.js",
+            "dev": "nodemon .",
+            "app": "npm i && nodemon ."
+        },
+
+****************************************
+5. To run the app:
+    1. npm run start => this will run the server.js
+    
+****************************************
+6. Terminal: install package
+    * npm i dotenv
+
+****************************************
+7. Create Folder Inside The server Folder:
+    * utils:
+        * File: handleErrors.js
+    * routes:
+        * File: timeService.js
+
+****************************************
+8. Terminal: install package
+    * npm i cors
+
+****************************************
+9. Create Folder Inside The server Folder:
+    * middlewares:
+        * File: cors.js
+
+****************************************
+10. To run any file inside the server folder:
+    1. node server\cors.js
+    2. node .\middlewares\cors.js
+
+****************************************
+11. Terminal: install package
+    * npm i morgan
+
+****************************************
+12. Create Folder Inside The server Folder:
+    * Folder: logger:
+            * File: loggerService.js
+            * Folder: loggers
+                * File: morganLogger.js
+
+***************************************
+13. Terminal: install package
+    * npm i joi
+    * npm i mongoose
+
+***************************************
+14. Create File inside the server folder:
+    * docker-compose.yml
+        * Copy this:
+        
+            # mongodb docker-compose.yml
+            version: '3.1'
+            services:
+            mongodb:
+                image: mongo:latest
+                container_name: mongodb
+                restart: always
+                ports:
+                - 27017:27017
+                volumes:
+                - mongodb_data:/data/db
+
+            hackeru-server:
+                image: hackeru-server:18.04
+                container_name: hackeru-server
+                restart: always
+                ports:
+                - 9191:9191
+                depends_on:
+                - mongodb
+                environment:
+                - PORT=9191
+                - NODE_ENV=development
+                - SERVER=mongodb
+
+            hackeru-client:
+                image: hackeru-client:18.04
+                container_name: hackeru-client
+                restart: always
+                ports:
+                - 3000:3000
+                depends_on:
+                - mongodb
+                - hackeru-server
+
+            volumes:
+            mongodb_data:
+
+# run command
+# docker build . -t hackeru-server:18.04
+
+# to running the container
+# docker compose up -d
+
+# to remove the container
+# docker compose down
+
+***************************************
+15. Terminal: Run command
+        * docker compose up -d
+
+        * docker-compose: 
+            This is the command-line tool for Docker Compose. 
+            It allows you to define and manage multi-container Docker applications.
+        
+        * up: 
+            This command is used to create and 
+            start containers defined in a Docker Compose file.
+        
+        * -d: 
+            This is the flag for detached mode. 
+            When used, the containers will run in the background and 
+            the command prompt will return immediately 
+            without attaching to the container logs.
+        
+***************************************
+16. Terminal: Install packages
+        * npm i bcryptjs
+        * npm i config
+        * npm i jsonwebtoken
+
+***************************************
+17. New File: 
+    * Dockerfile
+        FROM node
+
+        COPY . .
+
+        RUN npm install
+
+        EXPOSE 9191
+
+        CMD npm run start
+
+***************************************
+18. Terminal: Run command 
+        * docker build . -t hackeru-server:18.04
+
+        * docker build: 
+            This is the command to build a Docker image.
+        
+        * .: 
+            This specifies the build context. 
+            In this case, it refers to the current directory 
+            where the Dockerfile is located.
+        
+        * -t hackeru-server:18.04: 
+            This is the flag for specifying the image name and tag. 
+            It assigns the name hackeru-server to the image and the tag 18.04. 
+            The image name and tag can be customized according to your needs.
+
+
+***************************************

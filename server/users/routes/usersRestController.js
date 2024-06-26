@@ -73,19 +73,18 @@ router.get("/:id", auth, async (req, res) => {
 // PUT /users/:id - Update user. Only accessible for admins. Requires authentication.
 router.put("/:id", auth, async (req, res) => {
     try {
-        const userId = req.params.id;
-        const user = req.body;
-        
-        // If not admin and not the user
-        if (userId !== user._id && !user.isAdmin)
+        const userId = req.params.id; // URL user ID
+        const user = req.body;        // Body user object
+
+        // Check if the current user is not the owner of the account and is not an admin
+        if (userId !== req.user._id && !req.user.isAdmin)
             return handleError(res, 403, "Authorization Error: You must be the registered user to update its details");
 
-        // const { error } = validateUserUpdate(user);
-        const { error } = validateUserUpdate(req.body);
+        const { error } = validateUserUpdate(user);
         if (error)
             return handleError(res, 400, `Joi Error: ${error.details[0].message}`);
 
-        const normalizedUser = normalizeUser(req.body);
+        const normalizedUser = normalizeUser(user);
         const newUser = await updateUser(userId, normalizedUser);
         return res.send(newUser);
     } catch (error) {

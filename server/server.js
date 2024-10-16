@@ -18,6 +18,10 @@ app.use(express.static("./public"));
 // app.use(express.static("./public", {
 //     maxAge: 1000 * 60 * 60 * 24 * 7,
 // }));
+
+let id = generateInitialDataUsers();
+generateInitialDataCards(id);
+
 app.use(router);
 
 app.use((err, req, res, next) => {
@@ -29,6 +33,4 @@ const PORT = process.env.PORT || config.get('PORT') || 8181;
 app.listen(PORT, async () => {
     console.log(chalk.magentaBright(`Listening on: http://localhost:${PORT}`));
     await connectToDb();
-    let id = await generateInitialDataUsers();
-    generateInitialDataCards(id);
 })
